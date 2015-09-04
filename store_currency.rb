@@ -38,7 +38,7 @@ class Currency
     if @code == other_item.code
       Currency.new(@amount + other_item.amount, @code)
     else
-      puts "Error: DifferentCurrencyCodeError"
+      raise DifferentCurrencyCodeError, 'Different Currency Code Error'
     end
   end
 
@@ -46,7 +46,7 @@ class Currency
     if @code == other_item.code
       Currency.new(@amount - other_item.amount, @code)
     else
-      puts "Error: DifferentCurrencyCodeError"
+      raise DifferentCurrencyCodeError, 'Different Currency Code Error'
     end
   end
 

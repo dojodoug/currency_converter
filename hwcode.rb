@@ -1,4 +1,5 @@
 require './store_currency.rb'
+require './error.rb'
 
 megabucks = Currency.new(1000.00, "MGB")
 clams = Currency.new(5.00, "FMY")
@@ -12,3 +13,6 @@ puts add_currency.amount
 
 subtract_currency = clams - monopoly_money
 puts subtract_currency.amount
+
+error_currency = clams - megabucks
+puts error_currency.amount
