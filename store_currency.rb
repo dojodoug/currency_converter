@@ -15,55 +15,39 @@ Currency.new should be able to take one argument with a currency symbol embedded
 
 class Currency
 
-  attr_reader :currency_amount, :currency_code
+  attr_reader :amount, :code
 
   def initialize(amount, code)
-    @currency_amount = amount
-    @currency_code = code
+    @amount = amount
+    @code = code
   end
 
-  def currency_amount
-    @currency_amount
+  def amount
+    @amount
   end
 
-  def currency_code
-    @currency_code
-  end
-
-#  def to_s
-#    "Item (#{@currency_amount}, #{@currency_code})"
-#  end
-
-  def ==(other_item)
-    self.currency_amount == other_item.currency_amount && self.currency_code == other_item.currency_code
-  end
-
-end
-
-
-#puts Currency.new("abcd",1)  == Currency.new("abcd",1)
-#puts Currency.new("abcd",2)  == Currency.new("abcd",1)
-
-#clams(amount, code) == monopoly_money(amount,code)
-
-=begin
-class Item
-  attr_reader :currency_amount, :currency_code
-
-  def initialize(amount, code)
-    @currency_amount = amount
-    @currency_code = code
-  end
-
-  def to_s
-    "Item (#{@currency_amount}, #{@currency_code})"
+  def code
+    @code
   end
 
   def ==(other_item)
-    self.currency_amount == other_item.currency_amount && self.currency_code == other_item.currency_code
+    @amount == other_item.amount && @code == other_item.code
   end
-end
 
-p Item.new("abcd",1)  == Item.new("abcd",1)
-p Item.new("abcd",2)  == Item.new("abcd",1)
-=end
+  def +(other_item)
+    if @code == other_item.code
+      Currency.new(@amount + other_item.amount, @code)
+    else
+      puts "Error: DifferentCurrencyCodeError"
+    end
+  end
+
+  def -(other_item)
+    if @code == other_item.code
+      Currency.new(@amount - other_item.amount, @code)
+    else
+      puts "Error: DifferentCurrencyCodeError"
+    end
+  end
+
+end
