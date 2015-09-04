@@ -14,5 +14,8 @@ puts add_currency.amount
 subtract_currency = clams - monopoly_money
 puts subtract_currency.amount
 
+multiply_currency = clams * (5.5)
+puts multiply_currency.amount
+
 error_currency = clams - megabucks
 puts error_currency.amount

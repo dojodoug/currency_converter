@@ -36,7 +36,7 @@ class Currency
 
   def +(other_item)
     if @code == other_item.code
-      Currency.new(@amount + other_item.amount, @code)
+      Currency.new(@amount += other_item.amount, @code)
     else
       raise DifferentCurrencyCodeError, 'Different Currency Code Error'
     end
@@ -44,10 +44,14 @@ class Currency
 
   def -(other_item)
     if @code == other_item.code
-      Currency.new(@amount - other_item.amount, @code)
+      Currency.new(@amount -= other_item.amount, @code)
     else
       raise DifferentCurrencyCodeError, 'Different Currency Code Error'
     end
+  end
+
+  def *(ratio)
+    Currency.new(@amount * ratio, @code)
   end
 
 end
