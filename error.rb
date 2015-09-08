@@ -1,3 +1,5 @@
+##### CODE ERRORS #####
+
 class DifferentCurrencyCodeError < StandardError
 
 end
