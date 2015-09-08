@@ -1,21 +1,30 @@
 require './store_currency.rb'
-require './error.rb'
+require './convert_currency.rb'
 
-megabucks = Currency.new(1000.00, "MGB")
-clams = Currency.new(5.00, "FMY")
-monopoly_money = Currency.new(5.00, "FMY")
+megabucks = Currency.new(1000.00, :USD)
+clams = Currency.new("¥5.00")
+monopoly_money = Currency.new(5.00, :YEN)
 
-puts clams == monopoly_money
-puts clams == megabucks
+desired_currency = :EUR
 
-add_currency = clams + monopoly_money
-puts add_currency.amount
+bank = Converter.new({:USD => 1.00, :YEN => 119.282, :EUR => 0.89531})
 
-subtract_currency = clams - monopoly_money
-puts subtract_currency.amount
+# puts clams == monopoly_money
+# puts clams == megabucks
+#
+# add_currency = clams + monopoly_money
+# puts add_currency.amount
+#
+# subtract_currency = clams - monopoly_money
+# puts subtract_currency.amount
+#
+# multiply_currency = clams * (5.5)
+# puts multiply_currency.amount
+#
+# error_currency = clams - megabucks
+# puts error_currency.amount
 
-multiply_currency = clams * (5.5)
-puts multiply_currency.amount
-
-error_currency = clams - megabucks
-puts error_currency.amount
+megabucks.inspect
+monopoly_money.inspect
+money3 = monopoly_money + clams
+puts money3.inspect

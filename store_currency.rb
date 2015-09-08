@@ -15,20 +15,28 @@ Currency.new should be able to take one argument with a currency symbol embedded
 
 class Currency
 
-  attr_reader :amount, :code
+  attr_accessor :amount, :code
 
-  def initialize(amount, code)
-    @amount = amount
-    @code = code
+  def initialize(amount, code = nil)
+    hash = Hash.new{}
+    hash = {"$" => :USD, "€" => :EUR, "¥" => :YEN}
+    if code
+      @amount = amount.to_f
+      @code = code.to_sym
+    else
+      @amount = amount[1..-1].to_f
+      @code = hash[amount[0]]
+    end
+
   end
 
-  def amount
-    @amount
-  end
-
-  def code
-    @code
-  end
+  # def amount
+  #   @amount
+  # end
+  #
+  # def code
+  #   @code
+  # end
 
   def ==(other_item)
     @amount == other_item.amount && @code == other_item.code
