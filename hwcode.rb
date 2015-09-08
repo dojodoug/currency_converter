@@ -5,9 +5,18 @@ megabucks = Currency.new(1000.00, :USD)
 clams = Currency.new("¥5.00")
 monopoly_money = Currency.new(5.00, :YEN)
 
+bank = Converter.new({:USD => 1.00, :YEN => 119.282, :EUR => 0.89531})
 desired_currency = :EUR
 
-bank = Converter.new({:USD => 1.00, :YEN => 119.282, :EUR => 0.89531})
+######## TESTING CURRENCYCONVERTER OBJECTS #########
+
+money3 = monopoly_money + clams
+puts money3.inspect
+
+converted_currency = bank.convert(megabucks, desired_currency)
+puts converted_currency.inspect
+
+######## TESTING CURRENCY OBJECTS #########
 
 # puts clams == monopoly_money
 # puts clams == megabucks
@@ -23,8 +32,3 @@ bank = Converter.new({:USD => 1.00, :YEN => 119.282, :EUR => 0.89531})
 #
 # error_currency = clams - megabucks
 # puts error_currency.amount
-
-megabucks.inspect
-monopoly_money.inspect
-money3 = monopoly_money + clams
-puts money3.inspect
