@@ -1,3 +1,5 @@
+##### TESTING #####
+
 require './store_currency.rb'
 require './convert_currency.rb'
 
